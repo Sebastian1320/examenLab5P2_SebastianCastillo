@@ -5,6 +5,7 @@
 package examenlab5p2_sebastiancastillo;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -14,6 +15,10 @@ public class Civiles extends Usuarios {
     ArrayList<String>tramites=new ArrayList();
 
     public Civiles() {
+    }
+
+    public Civiles(String nombre, String apellido, String contraseña, String sexo, String departamento, Date fecha, String numeroid) {
+        super(nombre, apellido, contraseña, sexo, departamento, fecha, numeroid);
     }
     
 
