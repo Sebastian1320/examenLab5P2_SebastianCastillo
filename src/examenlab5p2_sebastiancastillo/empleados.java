@@ -49,7 +49,7 @@ public class empleados extends Usuarios {
 
     @Override
     public String toString() {
-        return super.toString()+ "\n carrera: " + carrera + "\n puesto: " + puesto + "\n años: " + años;
+       return super.toString() ;
     }
     
     

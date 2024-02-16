@@ -34,7 +34,7 @@ public class Civiles extends Usuarios {
 
     @Override
     public String toString() {
-        return "tramites=" + tramites ;
+        return super.toString() ;
     }
     
     
