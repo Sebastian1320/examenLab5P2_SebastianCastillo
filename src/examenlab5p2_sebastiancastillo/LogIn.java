@@ -1,38 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+//fila 2 asiento 4
 package examenlab5p2_sebastiancastillo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import java.util.Random;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Asus
  */
 public class LogIn extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form LogIn
      */
     public LogIn() {
-        Random rng=new Random();
         initComponents();
-        Date d=new Date("13/10/2006");
-        empleados e=new empleados("Ingeniero", "Empleado", "12", "Sebastian", "Castillo", "pepe", "M","Francisco Morazan" , d, "");
-        Civiles c=new Civiles("Rodolfo", "Suarez", "Dragonballz", "M", "Cortes", d, "");
-        Civiles c2=new Civiles("Rodolfo", "Suarez", "Dragonballz", "M", "Comayagua", d, "");
-        
-         if(e.getDepartamento().equals("Tegucigalpa")){
-            String id="01";
-            id+=rng.nextInt(28)+1;
-            id+=e.getFecha().getYear();
-            for (int i = 0; i <5; i++) {
-                id+=rng.nextInt(9);
-            }
-            JOptionPane.showMessageDialog(this, id);
-        }
     }
 
     /**
@@ -57,6 +42,7 @@ public class LogIn extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         Login = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -65,6 +51,12 @@ public class LogIn extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jp_contra = new javax.swing.JPasswordField();
 
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
+
         jLabel5.setText("Informacion Civiles");
 
         tabla2.setModel(new javax.swing.table.DefaultTableModel(
@@ -72,7 +64,7 @@ public class LogIn extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre Completo", "No.identidad", "Fecha", "No.identidad"
+                "Nombre Tramite", "Descripcion", "Fecha", "No.identidad"
             }
         ) {
             Class[] types = new Class [] {
@@ -199,15 +191,28 @@ public class LogIn extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Informacion Civiles", jPanel1);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 983, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(652, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(528, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificacion Civiles", jPanel2);
@@ -321,15 +326,85 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_nombreActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+        Random rng = new Random();
+        Date d = new Date("10/13/2006");
+        ArrayList<Usuarios> usuarioc = new ArrayList();
+        empleados e = new empleados("Ingeniero", "Empleado", "12", "Sebastian", "Castillo", "pepe", "M", "Francisco Morazan", d, "");
+        d = new Date("10/13/2002");
+        Civiles c = new Civiles("Rodolfo", "Suarez", "Dragonballz", "M", "Cortes", d, "");
+        d = new Date("9/17/1994");
+        Civiles c2 = new Civiles("Arnold", "Milla", "Dragonballz", "M", "Comayagua", d, "");
+        usuarioc.add(c);
+        usuarioc.add(c2);
+        usuarioc.add(e);
+
+        for (int i = 0; i < usuarioc.size(); i++) {
+            if (usuarioc.get(i).getDepartamento().equals("Tegucigalpa")) {
+                String id = "01";
+                int temp = rng.nextInt(28) + 1;
+                if (temp < 10) {
+                    id += "0" + temp+"-";
+                } else {
+                    id += temp+"-";
+                }
+               id += usuarioc.get(i).getFecha().getYear()+1900+"-";
+                for (int j = 0; j < 5; j++) {
+                    id += rng.nextInt(9);
+                }
+                usuarioc.get(i).setNumeroid(id);
+            } else if (usuarioc.get(i).getDepartamento().equals("Cortes")) {
+                String id = "02";
+                int temp = rng.nextInt(12) + 1;
+                if (temp < 10) {
+                    id += "0" + temp+"-";
+                } else {
+                    id += temp+"-";
+                }
+                id += usuarioc.get(i).getFecha().getYear()+1900+"-";
+                for (int j = 0; j < 5; j++) {
+                    id += rng.nextInt(9);
+                }
+                usuarioc.get(i).setNumeroid(id);
+            } else if (usuarioc.get(i).getDepartamento().equals("Comayagua")) {
+                String id = "03";
+                int temp = rng.nextInt(21) + 1;
+                if (temp < 10) {
+                    id += "0" + temp+"-";
+                } else {
+                    id += temp+"-";
+                }
+               id += usuarioc.get(i).getFecha().getYear()+1900+"-";
+                for (int j = 0; j < 5; j++) {
+                    id += rng.nextInt(9);
+                }
+                usuarioc.get(i).setNumeroid(id);
+            }
+        }
         if (jt_nombre.getText().equals("Sebastian Castillo") && jp_contra.getText().equals("pepe")) {
             this.setVisible(false);
             Empleado.setResizable(false);
             Empleado.pack();
             Empleado.setVisible(true);
             jLabel8.setText(jt_nombre.getText());
-            
+            DefaultTableModel tabla = (DefaultTableModel) tabla1.getModel();
+            DefaultTableModel tabla2 = (DefaultTableModel) tabla1.getModel();
+            for (int i = 0; i < usuarioc.size(); i++) {
+                if (usuarioc.get(i) instanceof Civiles) {
+                    Object[] llenar = {usuarioc.get(i).getNombre()+" "+usuarioc.get(i).getApellido(), usuarioc.get(i).getNumeroid(), usuarioc.get(i).getFecha()};
+                    tabla.addRow(llenar);
+                }
+            }
+            for (int i = 0; i < usuarioc.size(); i++) {
+                if (usuarioc.get(i) instanceof Civiles) {
+                    for (int j = 0; j < ((Civiles) usuarioc.get(i)).getTramites().size(); j++) {
+                        Object[] llenar = {((Civiles) usuarioc.get(i)).getTramites().get(j).getNombre(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getDescripcion(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getFecha(), usuarioc.get(i).getNumeroid()};
+                        tabla2.addRow(llenar);
+                    }
+                }
+            }
         } else if (jt_nombre.getText().equals("Rodolfo Suarez") && jp_contra.getText().equals("Dragonballz")) {
+
+        } else if (jt_nombre.getText().equals("Arnold Milla") && jp_contra.getText().equals("Dragonballz")) {
 
         } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
@@ -346,6 +421,14 @@ public class LogIn extends javax.swing.JFrame {
     private void jp_contraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jp_contraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jp_contraActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
     /**
      * @param args the command line arguments
@@ -387,6 +470,7 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JPanel Login;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
