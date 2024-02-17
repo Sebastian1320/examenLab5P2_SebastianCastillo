@@ -66,6 +66,12 @@ public class LogIn extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -388,6 +394,71 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre tramite", "Descripcion", "Fecha", "No.identidad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jLabel22.setText("Informacion personal");
+
+        jLabel23.setText("Tramites");
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "No.identidad", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+        }
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -397,9 +468,27 @@ public class LogIn extends javax.swing.JFrame {
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(324, 324, 324))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(339, 339, 339))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(111, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(101, 101, 101)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(110, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,7 +498,18 @@ public class LogIn extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(jLabel17)
                     .addComponent(jButton5))
-                .addContainerGap(478, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
+                .addComponent(jLabel22)
+                .addGap(131, 131, 131)
+                .addComponent(jLabel23)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(141, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(162, 162, 162)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(283, Short.MAX_VALUE)))
         );
 
         jTabbedPane2.addTab("Informacion Personal", jPanel3);
@@ -681,7 +781,7 @@ public class LogIn extends javax.swing.JFrame {
             Empleado.setVisible(true);
             jLabel8.setText(jt_nombre.getText());
             DefaultTableModel tabla = (DefaultTableModel) tabla1.getModel();
-            DefaultTableModel tabla2 = (DefaultTableModel) tabla1.getModel();
+            DefaultTableModel tabla3 = (DefaultTableModel) tabla2.getModel();
             for (int i = 0; i < usuarioc.size(); i++) {
                 if (usuarioc.get(i) instanceof Civiles) {
                     Object[] llenar = {usuarioc.get(i).getNombre() + " " + usuarioc.get(i).getApellido(), usuarioc.get(i).getNumeroid(), usuarioc.get(i).getFecha()};
@@ -692,7 +792,7 @@ public class LogIn extends javax.swing.JFrame {
                 if (usuarioc.get(i) instanceof Civiles) {
                     for (int j = 0; j < ((Civiles) usuarioc.get(i)).getTramites().size(); j++) {
                         Object[] llenar = {((Civiles) usuarioc.get(i)).getTramites().get(j).getNombre(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getDescripcion(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getFecha(), usuarioc.get(i).getNumeroid()};
-                        tabla2.addRow(llenar);
+                        tabla3.addRow(llenar);
                     }
                 }
             }
@@ -734,7 +834,7 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-       Empleado.setVisible(false);
+       Civil.setVisible(false);
         this.setVisible(true);
         jt_nombre.setText("");
         jp_contra.setText("");
@@ -745,7 +845,7 @@ public class LogIn extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Ningun parametro puede estar vacio");
     }else{
         for (int i = 0; i <usuarioc.size(); i++) {
-            if(usuarioc.get(i).getNumeroid().equals(combo_box.getSelectedIndex())){
+            if(jt_nombre.getText().equals(usuarioc.get(i).comparar())){
                 usuarioc.get(i).setNombre(mod_nom.getText());
                 usuarioc.get(i).setApellido(mod_apellido.getText());
                 usuarioc.get(i).setContraseña(mod_contra.getText());
@@ -771,7 +871,10 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        // TODO add your handling code here:
+            Civil.setVisible(false);
+        this.setVisible(true);
+        jt_nombre.setText("");
+        jp_contra.setText("");
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -787,6 +890,9 @@ public class LogIn extends javax.swing.JFrame {
         for (int i = 0; i < usuarioc.size(); i++) {
             if(jt_nombre.getText().equals(usuarioc.get(i).comparar())){
                 ((Civiles)usuarioc.get(i)).getTramites().add(new Tramites(tramite_nom.getText(), tramite_desc.getText(),d));
+                tramite_nom.setText("");
+                tramite_desc.setText("");
+                JOptionPane.showMessageDialog(this, "Se agrego exitosamente");
             }
         }
     }//GEN-LAST:event_jButton7MouseClicked
@@ -852,6 +958,8 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -865,8 +973,12 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPasswordField jp_contra;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JComboBox<String> mod_Sex;
