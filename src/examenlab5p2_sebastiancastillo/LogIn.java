@@ -1,4 +1,5 @@
 //fila 2 asiento 4
+// Esto es porque no se que mas hacer de commit
 package examenlab5p2_sebastiancastillo;
 
 import java.util.ArrayList;
