@@ -86,6 +86,8 @@ public class Usuarios {
     public String toString() {
         return  numeroid ;
     }
-    
+    public String comparar(){
+        return this.nombre+" "+this.apellido;
+    }
     
 }
