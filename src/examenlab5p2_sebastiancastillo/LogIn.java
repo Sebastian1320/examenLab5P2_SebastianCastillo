@@ -19,6 +19,15 @@ public class LogIn extends javax.swing.JFrame {
      */
     public LogIn() {
         initComponents();
+        Date d = new Date("10/13/2006");
+        empleados e = new empleados("Ingeniero", "Empleado", "12", "Sebastian", "Castillo", "pepe", "M", "Francisco Morazan", d, "");
+        d = new Date("10/13/2002");
+        Civiles c = new Civiles("Rodolfo", "Suarez", "Dragonballz", "M", "Cortes", d, "");
+        d = new Date("9/17/1994");
+        Civiles c2 = new Civiles("Arnold", "Milla", "pato", "M", "Comayagua", d, "");
+        usuarioc.add(c);
+        usuarioc.add(c2);
+        usuarioc.add(e);
     }
 
     /**
@@ -67,11 +76,11 @@ public class LogIn extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla5 = new javax.swing.JTable();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        Tabla4 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -394,7 +403,7 @@ public class LogIn extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -417,19 +426,19 @@ public class LogIn extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        jScrollPane3.setViewportView(Tabla5);
+        if (Tabla5.getColumnModel().getColumnCount() > 0) {
+            Tabla5.getColumnModel().getColumn(0).setResizable(false);
+            Tabla5.getColumnModel().getColumn(1).setResizable(false);
+            Tabla5.getColumnModel().getColumn(2).setResizable(false);
+            Tabla5.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jLabel22.setText("Informacion personal");
 
         jLabel23.setText("Tramites");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -452,11 +461,11 @@ public class LogIn extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setResizable(false);
-            jTable2.getColumnModel().getColumn(1).setResizable(false);
-            jTable2.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane4.setViewportView(Tabla4);
+        if (Tabla4.getColumnModel().getColumnCount() > 0) {
+            Tabla4.getColumnModel().getColumn(0).setResizable(false);
+            Tabla4.getColumnModel().getColumn(1).setResizable(false);
+            Tabla4.getColumnModel().getColumn(2).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -706,18 +715,7 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_nombreActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-
         Random rng = new Random();
-        Date d = new Date("10/13/2006");
-        empleados e = new empleados("Ingeniero", "Empleado", "12", "Sebastian", "Castillo", "pepe", "M", "Francisco Morazan", d, "");
-        d = new Date("10/13/2002");
-        Civiles c = new Civiles("Rodolfo", "Suarez", "Dragonballz", "M", "Cortes", d, "");
-        d = new Date("9/17/1994");
-        Civiles c2 = new Civiles("Arnold", "Milla", "pato", "M", "Comayagua", d, "");
-        usuarioc.add(c);
-        usuarioc.add(c2);
-        usuarioc.add(e);
-
         for (int i = 0; i < usuarioc.size(); i++) {
             if (usuarioc.get(i).getDepartamento().equals("Tegucigalpa")) {
                 String id = "01";
@@ -760,50 +758,155 @@ public class LogIn extends javax.swing.JFrame {
                 usuarioc.get(i).setNumeroid(id);
             }
         }
-        boolean valido = false;
-        boolean empleado=false;
-        for (int i = 0; i < usuarioc.size(); i++) {
-            if(usuarioc.get(i)instanceof empleados){
-                empleado=true;
+        if(usuarioc.get(0).getNumeroid().equals(usuarioc.get(1).getNumeroid())){
+            if (usuarioc.get(0).getDepartamento().equals("Tegucigalpa")) {
+                String id = "01";
+                int temp = rng.nextInt(28) + 1;
+                if (temp < 10) {
+                    id += "0" + temp + "-";
+                } else {
+                    id += temp + "-";
+                }
+                id += usuarioc.get(0).getFecha().getYear() + 1900 + "-";
+                for (int j = 0; j < 5; j++) {
+                    id += rng.nextInt(9);
+                }
+                usuarioc.get(0).setNumeroid(id);
+            } else if (usuarioc.get(0).getDepartamento().equals("Cortes")) {
+                String id = "02";
+                int temp = rng.nextInt(12) + 1;
+                if (temp < 10) {
+                    id += "0" + temp + "-";
+                } else {
+                    id += temp + "-";
+                }
+                id += usuarioc.get(0).getFecha().getYear() + 1900 + "-";
+                for (int j = 0; j < 5; j++) {
+                    id += rng.nextInt(9);
+                }
+                usuarioc.get(0).setNumeroid(id);
+            } else if (usuarioc.get(0).getDepartamento().equals("Comayagua")) {
+                String id = "03";
+                int temp = rng.nextInt(21) + 1;
+                if (temp < 10) {
+                    id += "0" + temp + "-";
+                } else {
+                    id += temp + "-";
+                }
+                id += usuarioc.get(0).getFecha().getYear() + 1900 + "-";
+                for (int j = 0; j < 5; j++) {
+                    id += rng.nextInt(9);
+                }
+                usuarioc.get(0).setNumeroid(id);
             }
-            if (jt_nombre.getText().equals(usuarioc.get(i).comparar())&& jp_contra.getText().equals(usuarioc.get(i).getContraseña())) {
-                valido=true;
-                break;
-        }else{
-                valido=false; 
+        }else if(usuarioc.get(1).getNumeroid().equals(usuarioc.get(2).getNumeroid())){
+             if (usuarioc.get(1).getDepartamento().equals("Tegucigalpa")) {
+                String id = "01";
+                int temp = rng.nextInt(28) + 1;
+                if (temp < 10) {
+                    id += "0" + temp + "-";
+                } else {
+                    id += temp + "-";
+                }
+                id += usuarioc.get(1).getFecha().getYear() + 1900 + "-";
+                for (int j = 0; j < 5; j++) {
+                    id += rng.nextInt(9);
+                }
+                usuarioc.get(1).setNumeroid(id);
+            } else if (usuarioc.get(1).getDepartamento().equals("Cortes")) {
+                String id = "02";
+                int temp = rng.nextInt(12) + 1;
+                if (temp < 10) {
+                    id += "0" + temp + "-";
+                } else {
+                    id += temp + "-";
+                }
+                id += usuarioc.get(1).getFecha().getYear() + 1900 + "-";
+                for (int j = 0; j < 5; j++) {
+                    id += rng.nextInt(9);
+                }
+                usuarioc.get(1).setNumeroid(id);
+            } else if (usuarioc.get(0).getDepartamento().equals("Comayagua")) {
+                String id = "03";
+                int temp = rng.nextInt(21) + 1;
+                if (temp < 10) {
+                    id += "0" + temp + "-";
+                } else {
+                    id += temp + "-";
+                }
+                id += usuarioc.get(1).getFecha().getYear() + 1900 + "-";
+                for (int j = 0; j < 5; j++) {
+                    id += rng.nextInt(9);
+                }
+                usuarioc.get(1).setNumeroid(id);
             }
         }
-        if (valido==true) {
-            this.setVisible(false);
-            if(empleado==true){
-            Empleado.setResizable(false);
-            Empleado.pack();
-            Empleado.setVisible(true);
-            jLabel8.setText(jt_nombre.getText());
-            DefaultTableModel tabla = (DefaultTableModel) tabla1.getModel();
-            DefaultTableModel tabla3 = (DefaultTableModel) tabla2.getModel();
-            for (int i = 0; i < usuarioc.size(); i++) {
-                if (usuarioc.get(i) instanceof Civiles) {
-                    Object[] llenar = {usuarioc.get(i).getNombre() + " " + usuarioc.get(i).getApellido(), usuarioc.get(i).getNumeroid(), usuarioc.get(i).getFecha()};
-                    tabla.addRow(llenar);
-                }
+        boolean valido = false;
+        boolean empleado = false;
+        for (int i = 0; i < usuarioc.size(); i++) {
+            if (usuarioc.get(i) instanceof empleados) {
+                empleado = true;
+            }else{
+                empleado =false;
             }
-            for (int i = 0; i < usuarioc.size(); i++) {
-                if (usuarioc.get(i) instanceof Civiles) {
-                    for (int j = 0; j < ((Civiles) usuarioc.get(i)).getTramites().size(); j++) {
-                        Object[] llenar = {((Civiles) usuarioc.get(i)).getTramites().get(j).getNombre(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getDescripcion(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getFecha(), usuarioc.get(i).getNumeroid()};
-                        tabla3.addRow(llenar);
+            if (jt_nombre.getText().equals(usuarioc.get(i).comparar()) && jp_contra.getText().equals(usuarioc.get(i).getContraseña())) {
+                valido = true;
+                break;
+            } else {
+                valido = false;
+            }
+        }
+        if (valido == true) {
+            this.setVisible(false);
+            if (empleado) {
+                Empleado.setResizable(false);
+                Empleado.pack();
+                Empleado.setVisible(true);
+                jLabel8.setText(jt_nombre.getText());
+                DefaultTableModel tabla = (DefaultTableModel) tabla1.getModel();
+                DefaultTableModel tabla3 = (DefaultTableModel) tabla2.getModel();
+                tabla.setRowCount(0);
+                for (int i = 0; i < usuarioc.size(); i++) {
+                    if (usuarioc.get(i) instanceof Civiles) {
+
+                        Object[] llenar = {usuarioc.get(i).getNombre() + " " + usuarioc.get(i).getApellido(), usuarioc.get(i).getNumeroid(), usuarioc.get(i).getFecha()};
+                        tabla.addRow(llenar);
                     }
                 }
-            }
-        }else{
+                for (int i = 0; i < usuarioc.size(); i++) {
+                    if (usuarioc.get(i) instanceof Civiles) {
+                        for (int j = 0; j < ((Civiles) usuarioc.get(i)).getTramites().size(); j++) {
+                            Object[] llenar = {((Civiles) usuarioc.get(i)).getTramites().get(j).getNombre(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getDescripcion(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getFecha(), usuarioc.get(i).getNumeroid()};
+                            tabla3.addRow(llenar);
+                        }
+                    }
+                }
+            } else if(!empleado){
                 this.setVisible(false);
                 Civil.pack();
                 Civil.setResizable(false);
                 Civil.setVisible(true);
+                DefaultTableModel tabla4t = (DefaultTableModel) Tabla4.getModel();
+                DefaultTableModel tabla5t = (DefaultTableModel) Tabla5.getModel();
+                tabla4t.setRowCount(0);
+                tabla5t.setRowCount(0);
+                 for (int i = 0; i < usuarioc.size(); i++) {
+                    if (jt_nombre.getText().equals(usuarioc.get(i).comparar()))  {
+                         Object[] llenar={usuarioc.get(i).getNombre()+" "+usuarioc.get(i).getApellido(),usuarioc.get(i).getNumeroid(),usuarioc.get(i).getFecha()};
+                         tabla4t.addRow(llenar);
+                    }
+                }
+                 for (int i = 0; i < usuarioc.size(); i++) {
+                    if (jt_nombre.getText().equals(usuarioc.get(i).comparar()))  {
+                        for (int j = 0; j < ((Civiles) usuarioc.get(i)).getTramites().size(); j++) {
+                            Object[] llenar = {((Civiles) usuarioc.get(i)).getTramites().get(j).getNombre(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getDescripcion(), ((Civiles) usuarioc.get(i)).getTramites().get(j).getFecha(), usuarioc.get(i).getNumeroid()};
+                            tabla5t.addRow(llenar);
+                        }
+                    }
+                }
                 jLabel17.setText(jt_nombre.getText());
             }
-        }  else {
+        } else {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
             jt_nombre.setText("");
             jp_contra.setText("");
@@ -820,7 +923,7 @@ public class LogIn extends javax.swing.JFrame {
         for (int i = 0; i < usuarioc.size(); i++) {
             if (usuarioc.get(i) instanceof Civiles) {
                 model.addElement(usuarioc.get(i));
-           }
+            }
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
@@ -834,29 +937,35 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-       Civil.setVisible(false);
+        Empleado.setVisible(false);
         this.setVisible(true);
         jt_nombre.setText("");
         jp_contra.setText("");
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-    if(mod_nom.getText().isEmpty()|| mod_apellido.getText().isEmpty()||mod_contra.getText().isEmpty()||mod_fecha.getDate()==null){
-        JOptionPane.showMessageDialog(this, "Ningun parametro puede estar vacio");
-    }else{
-        for (int i = 0; i <usuarioc.size(); i++) {
-            if(jt_nombre.getText().equals(usuarioc.get(i).comparar())){
-                usuarioc.get(i).setNombre(mod_nom.getText());
-                usuarioc.get(i).setApellido(mod_apellido.getText());
-                usuarioc.get(i).setContraseña(mod_contra.getText());
-                usuarioc.get(i).setFecha(mod_fecha.getDate());
-                usuarioc.get(i).setSexo(mod_Sex.getSelectedItem().toString());
-                usuarioc.get(i).setDepartamento(mod_dep.getSelectedItem().toString());
-                JOptionPane.showMessageDialog(this, "Se modifico con exito");
-                break;
+        if (mod_nom.getText().isEmpty() || mod_apellido.getText().isEmpty() || mod_contra.getText().isEmpty() || mod_fecha.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Ningun parametro puede estar vacio");
+        } else {
+            for (int i = 0; i < usuarioc.size(); i++) {
+                if (usuarioc.get(i)instanceof Civiles &&usuarioc.get(i).equals(combo_box.getSelectedItem())) {
+                    usuarioc.get(i).setNombre(mod_nom.getText());
+                    usuarioc.get(i).setApellido(mod_apellido.getText());
+                    usuarioc.get(i).setContraseña(mod_contra.getText());
+                    usuarioc.get(i).setFecha(mod_fecha.getDate());
+                    usuarioc.get(i).setSexo(mod_Sex.getSelectedItem().toString());
+                    usuarioc.get(i).setDepartamento(mod_dep.getSelectedItem().toString());
+                    mod_nom.setText("");
+                    mod_apellido.setText("");
+                    mod_contra.setText("");
+                    mod_fecha.setDate(new Date());
+                    mod_Sex.setSelectedIndex(0);
+                    mod_dep.setSelectedIndex(0);
+                    JOptionPane.showMessageDialog(this, "Se modifico con exito");
+                    break;
+                }
             }
         }
-    }
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
@@ -864,14 +973,14 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-         Civil.setVisible(false);
+        Civil.setVisible(false);
         this.setVisible(true);
         jt_nombre.setText("");
         jp_contra.setText("");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-            Civil.setVisible(false);
+        Civil.setVisible(false);
         this.setVisible(true);
         jt_nombre.setText("");
         jp_contra.setText("");
@@ -882,14 +991,14 @@ public class LogIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTabbedPane2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane2StateChanged
-       jLabel19.setText(jt_nombre.getText());
+        jLabel19.setText(jt_nombre.getText());
     }//GEN-LAST:event_jTabbedPane2StateChanged
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        Date d=new Date();
+        Date d = new Date();
         for (int i = 0; i < usuarioc.size(); i++) {
-            if(jt_nombre.getText().equals(usuarioc.get(i).comparar())){
-                ((Civiles)usuarioc.get(i)).getTramites().add(new Tramites(tramite_nom.getText(), tramite_desc.getText(),d));
+            if (jt_nombre.getText().equals(usuarioc.get(i).comparar())) {
+                ((Civiles) usuarioc.get(i)).getTramites().add(new Tramites(tramite_nom.getText(), tramite_desc.getText(), d));
                 tramite_nom.setText("");
                 tramite_desc.setText("");
                 JOptionPane.showMessageDialog(this, "Se agrego exitosamente");
@@ -936,6 +1045,8 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JFrame Civil;
     private javax.swing.JFrame Empleado;
     private javax.swing.JPanel Login;
+    private javax.swing.JTable Tabla4;
+    private javax.swing.JTable Tabla5;
     private javax.swing.JComboBox<String> combo_box;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -977,8 +1088,6 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JPasswordField jp_contra;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JComboBox<String> mod_Sex;
